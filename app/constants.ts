@@ -9,3 +9,7 @@ export enum ResponseStatus {
   BAD_REQUEST = 400,
   NOT_FOUND = 404,
 }
+
+export enum Routes {
+  MESSAGES = "/chat/messages",
+}
