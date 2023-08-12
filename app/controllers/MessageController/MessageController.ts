@@ -2,10 +2,10 @@ import { NextFunction, Request, Response } from "express";
 import {
   LongPollingService,
   LongPollingServiceEvents,
-} from "../../services/LongPollingService";
-import { Message, MessageService } from "../../services/MessageService";
-import { ResponseStatus } from "../../constants";
-import { ApiError } from "../../utils";
+} from "@/services/LongPollingService";
+import { Message, MessageService } from "@/services/MessageService";
+import { ResponseStatus } from "@/constants";
+import { ApiError } from "@/utils";
 
 class MessageController {
   public getMessages = async (

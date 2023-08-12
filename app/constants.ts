@@ -11,5 +11,5 @@ export enum ResponseStatus {
 }
 
 export enum Routes {
-  MESSAGES = "/chat/messages",
+  MESSAGES = "/api/v1/chat/messages",
 }

@@ -1,10 +1,11 @@
+import 'module-alias/register'; // path aliases
 import express from "express";
 import cors from "cors";
 
-import { CatchErrorMiddleware } from "./middlewares";
-import { LoggerMiddleware } from "./middlewares/LoggerMiddleware/LoggerMiddleware";
-import { MessageRouter } from "./routers";
-import { Routes } from "./constants";
+import { CatchErrorMiddleware } from "@/middlewares";
+import { LoggerMiddleware } from "@/middlewares";
+import { MessageRouter } from "@/routers";
+import { Routes } from "@/constants";
 
 const PORT = 8080;
 const app = express();
