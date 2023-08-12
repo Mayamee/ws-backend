@@ -1,9 +1,11 @@
+import 'module-alias/register'; // path aliases
 import express from "express";
 import cors from "cors";
 
-import { CatchErrorMiddleware } from "./middlewares";
-import { MessageController } from "./controllers";
-import { LoggerMiddleware } from "./middlewares/LoggerMiddleware/LoggerMiddleware";
+import { CatchErrorMiddleware } from "@/middlewares";
+import { LoggerMiddleware } from "@/middlewares";
+import { MessageRouter } from "@/routers";
+import { Routes } from "@/constants";
 
 const PORT = 8080;
 const app = express();
@@ -19,9 +21,7 @@ app.use(
 app.use(express.json());
 app.use(LoggerMiddleware);
 
-app
-  .get("/chat/polling", MessageController.getMessagesPolling)
-  .post("/chat/polling", MessageController.postMessagePolling);
+app.use(Routes.MESSAGES, MessageRouter);
 
 app.use(CatchErrorMiddleware);
 

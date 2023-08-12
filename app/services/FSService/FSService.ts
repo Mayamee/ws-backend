@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { ROOT_CONTENT_DIR } from "../../constants";
+import { ROOT_CONTENT_DIR } from "@/constants";
 
 class FSService {
   constructor(private contentPath: string) {}

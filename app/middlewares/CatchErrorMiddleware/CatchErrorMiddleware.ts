@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { ResponseStatus } from "../../constants";
-import { ApiError } from "../../utils";
+import { ResponseStatus } from "@/constants";
+import { ApiError } from "@/utils";
 
 export function CatchErrorMiddleware(
   err: Error,

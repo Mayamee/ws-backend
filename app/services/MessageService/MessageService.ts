@@ -1,7 +1,7 @@
-import { FSService } from "../FSService";
+import { FSService } from "@/services";
 import { v4 as uuid } from "uuid";
 
-type Message = {
+export type Message = {
   id: string;
   content: string;
 };
