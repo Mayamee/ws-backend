@@ -43,7 +43,7 @@ class MessageController {
     }
   };
 
-  public getMessagesPolling = async (
+  public pollMessages = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -59,7 +59,7 @@ class MessageController {
       next(err);
     }
   };
-  public postMessagePolling = async (
+  public postMessageWithPolling = async (
     req: Request,
     res: Response,
     next: NextFunction

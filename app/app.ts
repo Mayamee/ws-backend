@@ -20,8 +20,9 @@ app.use(express.json());
 app.use(LoggerMiddleware);
 
 app
-  .get("/chat/polling", MessageController.getMessagesPolling)
-  .post("/chat/polling", MessageController.postMessagePolling);
+  .get("/chat/messages/polling", MessageController.pollMessages)
+  .get("/chat/messages", MessageController.getMessages)
+  .post("/chat/messages", MessageController.postMessageWithPolling);
 
 app.use(CatchErrorMiddleware);
 
