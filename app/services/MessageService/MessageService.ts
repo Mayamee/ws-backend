@@ -20,9 +20,11 @@ class MessageService {
   private messages: Message[] = []
   private state: MessageServiceState = MessageServiceState.initializing
   constructor(private fileService: FSService) {
+		console.info("Loading messages from persistent storage...")
     this.loadMessages().then((data) => {
       this.messages = data.messages
       this.state = MessageServiceState.ready
+			console.info("Messages successfully loaded")
     })
   }
 
