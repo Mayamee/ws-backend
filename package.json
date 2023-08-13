@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
   "scripts": {
     "dev": "nodemon -i content -x ts-node app/app.ts"
   },
