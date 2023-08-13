@@ -1,4 +1,4 @@
-import fs from 'node:fs'
+import fs from 'node:fs/promises'
 import path from 'node:path'
 import { ROOT_CONTENT_DIR } from '@/constants'
 
@@ -8,18 +8,14 @@ class FSService {
   async getFileContent(fileRelativePath: string): Promise<string> {
     const filePath = path.join(ROOT_CONTENT_DIR, this.contentPath, fileRelativePath)
 
-    if (!fs.existsSync(filePath)) {
+    try {
+      await fs.access(filePath)
+      return fs.readFile(filePath, {
+        encoding: 'utf-8',
+      })
+    } catch {
       return ''
     }
-
-    return new Promise((resolve, reject) => {
-      fs.readFile(filePath, 'utf8', (err, data) => {
-        if (err) {
-          reject(err)
-        }
-        resolve(data)
-      })
-    })
   }
   async saveFileContent(
     fileRelativePath: string,
@@ -29,28 +25,15 @@ class FSService {
     const filePath = path.join(ROOT_CONTENT_DIR, this.contentPath, fileRelativePath)
     const fileDir = path.dirname(filePath)
 
-    if (!fs.existsSync(fileDir)) {
-      fs.mkdirSync(fileDir, {
+    await fs.access(fileDir).catch(() => {
+      fs.mkdir(fileDir, {
         recursive: true,
       })
-    }
+    })
 
-    await new Promise<void>((resolve, reject) => {
-      if (append) {
-        fs.appendFile(filePath, fileContent, (err) => {
-          if (err) {
-            reject(err)
-          }
-          resolve()
-        })
-      } else {
-        fs.writeFile(filePath, fileContent, (err) => {
-          if (err) {
-            reject(err)
-          }
-          resolve()
-        })
-      }
+    await fs.writeFile(filePath, fileContent, {
+      encoding: 'utf-8',
+      flag: append ? 'a' : 'w',
     })
   }
 }
