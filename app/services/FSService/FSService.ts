@@ -27,7 +27,8 @@ class FSService {
   }
   async saveFileContent(
     fileRelativePath: string,
-    fileContent: string
+    fileContent: string,
+    append: boolean = false
   ): Promise<void> {
     const filePath = path.join(
       ROOT_CONTENT_DIR,
@@ -43,12 +44,21 @@ class FSService {
     }
 
     await new Promise<void>((resolve, reject) => {
-      fs.writeFile(filePath, fileContent, (err) => {
-        if (err) {
-          reject(err);
-        }
-        resolve();
-      });
+      if (append) {
+        fs.appendFile(filePath, fileContent, (err) => {
+          if (err) {
+            reject(err);
+          }
+          resolve();
+        });
+      } else {
+        fs.writeFile(filePath, fileContent, (err) => {
+          if (err) {
+            reject(err);
+          }
+          resolve();
+        });
+      }
     });
   }
 }

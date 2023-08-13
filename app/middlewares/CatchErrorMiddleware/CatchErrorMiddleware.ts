@@ -1,14 +1,22 @@
 import { NextFunction, Request, Response } from "express";
-import { ResponseStatus } from "@/constants";
+import { FSServicePaths, ResponseStatus } from "@/constants";
 import { ApiError } from "@/utils";
+import { FSService } from "@/services";
+import { getLogErrorMessage } from "./utils";
+
+const fileService = new FSService(FSServicePaths.LOGS);
 
 export function CatchErrorMiddleware(
   err: Error,
-  req: Request,
+  _req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ) {
-  console.error(err);
+  fileService.saveFileContent(
+    "error.log",
+    getLogErrorMessage(err) + "\n",
+    true
+  );
   if (err instanceof ApiError) {
     return res.status(err.status).json({
       message: err.message,

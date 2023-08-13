@@ -21,5 +21,6 @@ app.use(Routes.MESSAGES, MessageRouter);
 app.use(CatchErrorMiddleware);
 
 app.listen(PORT, HOST, () => {
-  console.log(`Server started on port ${PORT}`);
+  console.log(`Server started on port http://${HOST}:${PORT}`);
+	console.log(`Active routes: http://${HOST}:${PORT}${Routes.MESSAGES}`)
 });

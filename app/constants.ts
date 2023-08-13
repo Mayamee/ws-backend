@@ -13,3 +13,8 @@ export enum ResponseStatus {
 export enum Routes {
   MESSAGES = "/api/v1/chat/messages",
 }
+
+export enum FSServicePaths {
+  LOGS = "logs",
+  MESSAGES = "messages",
+}

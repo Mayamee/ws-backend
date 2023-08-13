@@ -2,7 +2,6 @@ import { CorsOptions } from "cors";
 
 type Environment = {
   HOST: string;
-  PROTOCOL: "http" | "https";
   PORT: number;
   NODE_ENV: "development" | "production";
   CORS_OPTIONS: CorsOptions;
@@ -14,7 +13,6 @@ class EnvironmentService {
   }
   private config: Environment = {
     HOST: "localhost",
-    PROTOCOL: "http",
     PORT: 8080,
     NODE_ENV: "development",
     CORS_OPTIONS: {
@@ -28,9 +26,6 @@ class EnvironmentService {
   private loadConfig = (source: Record<string, string | undefined>) => {
     if (source.HOST) {
       this.config.HOST = source.HOST;
-    }
-    if (source.PROTOCOL) {
-      this.config.PROTOCOL = source.PROTOCOL as Environment["PROTOCOL"];
     }
     if (source.PORT) {
       this.config.PORT = parseInt(source.PORT, 10);

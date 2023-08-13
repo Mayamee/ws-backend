@@ -1,5 +1,6 @@
-import { FSService } from "@/services";
 import { v4 as uuid } from "uuid";
+import { FSService } from "./../FSService";
+import { FSServicePaths } from "@/constants";
 
 export type Message = {
   id: string;
@@ -87,6 +88,8 @@ class MessageService {
   }
 }
 
-const messageService = new MessageService(new FSService("messages"));
+const messageService = new MessageService(
+  new FSService(FSServicePaths.MESSAGES)
+);
 
 export { messageService as MessageService };
