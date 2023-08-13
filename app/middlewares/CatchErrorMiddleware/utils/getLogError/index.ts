@@ -1,0 +1,1 @@
+export { getLogErrorMessage } from "./getLogError";

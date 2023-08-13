@@ -2,7 +2,6 @@ import { CorsOptions } from "cors";
 
 type Environment = {
   HOST: string;
-  PROTOCOL: "http" | "https";
   PORT: number;
   NODE_ENV: "development" | "production";
   CORS_OPTIONS: CorsOptions;
@@ -14,7 +13,6 @@ class EnvironmentService {
   }
   private config: Environment = {
     HOST: "localhost",
-    PROTOCOL: "http",
     PORT: 8080,
     NODE_ENV: "development",
     CORS_OPTIONS: {
@@ -25,31 +23,29 @@ class EnvironmentService {
       credentials: true,
     },
   };
-  private loadConfig = (env: Record<string, string | undefined>) => {
-    if (env.HOST) {
-      this.config.HOST = env.HOST;
+  private loadConfig = (source: Record<string, string | undefined>) => {
+    if (source.HOST) {
+      this.config.HOST = source.HOST;
     }
-    if (env.PROTOCOL) {
-      this.config.PROTOCOL = env.PROTOCOL as Environment["PROTOCOL"];
+    if (source.PORT) {
+      this.config.PORT = parseInt(source.PORT, 10);
     }
-    if (env.PORT) {
-      this.config.PORT = parseInt(env.PORT, 10);
-    }
-    if (env.NODE_ENV) {
-      this.config.NODE_ENV = env.NODE_ENV as Environment["NODE_ENV"];
+    if (source.NODE_ENV) {
+      this.config.NODE_ENV = source.NODE_ENV as Environment["NODE_ENV"];
     }
     // CORS
-    if (env.ALLOW_ORIGINS) {
-      this.config.CORS_OPTIONS.origin = env.ALLOW_ORIGINS.split(",");
+    if (source.ALLOW_ORIGINS) {
+      this.config.CORS_OPTIONS.origin = source.ALLOW_ORIGINS.split(",");
     }
-    if (env.ALLOW_METHODS) {
-      this.config.CORS_OPTIONS.methods = env.ALLOW_METHODS;
+    if (source.ALLOW_METHODS) {
+      this.config.CORS_OPTIONS.methods = source.ALLOW_METHODS;
     }
-    if (env.ALLOW_HEADERS) {
-      this.config.CORS_OPTIONS.allowedHeaders = env.ALLOW_HEADERS;
+    if (source.ALLOW_HEADERS) {
+      this.config.CORS_OPTIONS.allowedHeaders = source.ALLOW_HEADERS;
     }
-    if (env.ALLOW_CREDENTIALS) {
-      this.config.CORS_OPTIONS.credentials = env.ALLOW_CREDENTIALS === "true";
+    if (source.ALLOW_CREDENTIALS) {
+      this.config.CORS_OPTIONS.credentials =
+        source.ALLOW_CREDENTIALS === "true";
     }
     // CORS
   };
