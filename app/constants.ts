@@ -1,7 +1,7 @@
-import path from "path";
+import path from 'path'
 
-export const ROOT_DIR = path.join(__dirname, "..");
-export const ROOT_CONTENT_DIR = path.join(ROOT_DIR, "content");
+export const ROOT_DIR = path.join(__dirname, '..')
+export const ROOT_CONTENT_DIR = path.join(ROOT_DIR, 'content')
 export enum ResponseStatus {
   SUCCESS = 200,
   CREATED = 201,
@@ -11,10 +11,10 @@ export enum ResponseStatus {
 }
 
 export enum Routes {
-  MESSAGES = "/api/v1/chat/messages",
+  MESSAGES = '/api/v1/chat/messages',
 }
 
 export enum FSServicePaths {
-  LOGS = "logs",
-  MESSAGES = "messages",
+  LOGS = 'logs',
+  MESSAGES = 'messages',
 }

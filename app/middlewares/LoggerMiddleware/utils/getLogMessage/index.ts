@@ -1,1 +1,1 @@
-export { getLogMessage } from "./getLogMessage";
+export { getLogMessage } from './getLogMessage'

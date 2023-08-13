@@ -1,2 +1,2 @@
-export * from "./CatchErrorMiddleware";
-export * from "./LoggerMiddleware";
+export * from './CatchErrorMiddleware'
+export * from './LoggerMiddleware'

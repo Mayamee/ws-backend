@@ -1,4 +1,1 @@
-export {
-  LongPollingService,
-  LongPollingServiceEvents,
-} from "./LongPollingService";
+export { LongPollingService, LongPollingServiceEvents } from './LongPollingService'

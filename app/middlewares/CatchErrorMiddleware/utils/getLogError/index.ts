@@ -1,1 +1,1 @@
-export { getLogErrorMessage } from "./getLogError";
+export { getLogErrorMessage } from './getLogError'

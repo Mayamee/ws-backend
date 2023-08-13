@@ -1,1 +1,1 @@
-export * from "./MessageController";
+export * from './MessageController'

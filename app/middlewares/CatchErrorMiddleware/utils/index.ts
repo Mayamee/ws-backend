@@ -1,1 +1,1 @@
-export * from "./getLogError";
+export * from './getLogError'

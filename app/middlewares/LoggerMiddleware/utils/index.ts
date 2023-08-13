@@ -1,1 +1,1 @@
-export * from "./getLogMessage";
+export * from './getLogMessage'

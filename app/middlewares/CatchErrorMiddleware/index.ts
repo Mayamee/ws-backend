@@ -1,1 +1,1 @@
-export { CatchErrorMiddleware } from "./CatchErrorMiddleware";
+export { CatchErrorMiddleware } from './CatchErrorMiddleware'

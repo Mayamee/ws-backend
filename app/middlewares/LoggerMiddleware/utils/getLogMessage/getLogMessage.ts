@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express'
 
 export const getLogMessage = (req: Request, _res: Response): string => {
   const logMessage = `${new Date().toLocaleString()} ${JSON.stringify({
@@ -11,6 +11,6 @@ export const getLogMessage = (req: Request, _res: Response): string => {
     params: req.params,
     headers: req.headers,
     cookies: req.cookies,
-  })}`;
-  return logMessage;
-};
+  })}`
+  return logMessage
+}

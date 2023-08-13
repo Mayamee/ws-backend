@@ -1,1 +1,1 @@
-export { EnvironmentService } from "./EnvironmentService";
+export { EnvironmentService } from './EnvironmentService'

@@ -1,1 +1,1 @@
-export * from "./MessageRouter";
+export * from './MessageRouter'

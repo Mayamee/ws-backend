@@ -1,1 +1,1 @@
-export { MessageRouter } from "./MessageRouter";
+export { MessageRouter } from './MessageRouter'

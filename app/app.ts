@@ -1,26 +1,26 @@
-import "module-alias/register"; // path aliases
-import express from "express";
-import cors from "cors";
+import 'module-alias/register' // path aliases
+import express from 'express'
+import cors from 'cors'
 
-import { CatchErrorMiddleware } from "@/middlewares";
-import { LoggerMiddleware } from "@/middlewares";
-import { MessageRouter } from "@/routers";
-import { Routes } from "@/constants";
-import { EnvironmentService } from "@/services";
+import { CatchErrorMiddleware } from '@/middlewares'
+import { LoggerMiddleware } from '@/middlewares'
+import { MessageRouter } from '@/routers'
+import { Routes } from '@/constants'
+import { EnvironmentService } from '@/services'
 
-const app = express();
-const { PORT, HOST, CORS_OPTIONS } = EnvironmentService.currentConfig;
+const app = express()
+const { PORT, HOST, CORS_OPTIONS } = EnvironmentService.currentConfig
 
-app.use(cors(CORS_OPTIONS));
+app.use(cors(CORS_OPTIONS))
 
-app.use(express.json());
-app.use(LoggerMiddleware);
+app.use(express.json())
+app.use(LoggerMiddleware)
 
-app.use(Routes.MESSAGES, MessageRouter);
+app.use(Routes.MESSAGES, MessageRouter)
 
-app.use(CatchErrorMiddleware);
+app.use(CatchErrorMiddleware)
 
 app.listen(PORT, HOST, () => {
-  console.log(`Server started on port http://${HOST}:${PORT}`);
-	console.log(`Active routes: http://${HOST}:${PORT}${Routes.MESSAGES}`)
-});
+  console.log(`Server started on port http://${HOST}:${PORT}`)
+  console.log(`Active routes: http://${HOST}:${PORT}${Routes.MESSAGES}`)
+})

@@ -1,1 +1,1 @@
-export { MessageController } from "./MessageController";
+export { MessageController } from './MessageController'
