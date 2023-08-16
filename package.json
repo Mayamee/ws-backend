@@ -40,5 +40,9 @@
   },
   "_moduleAliases": {
     "@": "app"
+  },
+  "volta": {
+    "node": "18.14.0",
+    "yarn": "1.22.19"
   }
 }
